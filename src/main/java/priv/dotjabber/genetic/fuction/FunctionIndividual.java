@@ -26,10 +26,10 @@ public class FunctionIndividual extends Individual {
     public void mutate() {
         // take random bit
         int bit = RAND.nextInt(LENGTH * Integer.SIZE);
-        int hi = bit / Integer.SIZE; // chromosome index
+        int hi = bit / Integer.SIZE; // genome index
         int bi = bit % Integer.SIZE; // bit index
 
-        chromosome[hi] ^= 1 << bi;
+        chromosome[hi] ^= 1 << bi; // set t
     }
 
     public Individual cross(Individual other) {

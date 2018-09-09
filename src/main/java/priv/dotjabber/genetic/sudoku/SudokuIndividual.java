@@ -14,9 +14,14 @@ public class SudokuIndividual extends Individual {
     // chromosome (9 X 9 genomes, integers filling whole sudoku board)
     private static final int BLOCK = 3;
     private static final int LENGTH = BLOCK * BLOCK;
+    private int[] template;
+
+    public SudokuIndividual() {
+    }
 
     public SudokuIndividual(int[] board) {
-        chromosome = board;
+        template = board;
+        chromosome = new int[board.length];
 
         for(int i = 0; i < LENGTH; i += BLOCK) {
             for (int j = 0; j < LENGTH; j += BLOCK) {
@@ -26,7 +31,10 @@ public class SudokuIndividual extends Individual {
                 // so there are no duplications per block)
                 for (int m = 0; m < BLOCK; m++) {
                     for (int n = 0; n < BLOCK; n++) {
-                        numbers.remove(new Integer(chromosome[(i + m) * LENGTH + (j + n)]));
+                        if (template[(i + m) * LENGTH + (j + n)] > 0) {
+                            chromosome[(i + m) * LENGTH + (j + n)] = template[(i + m) * LENGTH + (j + n)];
+                            numbers.remove(new Integer(template[(i + m) * LENGTH + (j + n)]));
+                        }
                     }
                 }
 
@@ -34,7 +42,7 @@ public class SudokuIndividual extends Individual {
                 Collections.shuffle(numbers);
                 for (int m = 0; m < BLOCK; m++) {
                     for (int n = 0; n < BLOCK; n++) {
-                        if (chromosome[(i + m) * LENGTH + (j + n)] == 0) {
+                        if (template[(i + m) * LENGTH + (j + n)] == 0) {
                             chromosome[(i + m) * LENGTH + (j + n)] = numbers.remove(0);
                         }
                     }
@@ -45,7 +53,9 @@ public class SudokuIndividual extends Individual {
 
     @Override
     public Individual cross(Individual other) {
-        SudokuIndividual child = new SudokuIndividual(new int[LENGTH * LENGTH]);
+        SudokuIndividual child = new SudokuIndividual();
+        child.chromosome = new int[LENGTH * LENGTH];
+        child.template = template;
 
         // take the random cross point
         // - if we consider an integer below the point, the value
@@ -80,9 +90,11 @@ public class SudokuIndividual extends Individual {
         int dsty = BLOCK * j + RAND.nextInt(BLOCK);
 
         // and swap them
-        int tmp = chromosome[dstx * LENGTH + dsty];
-        chromosome[dstx * LENGTH + dsty] = chromosome[srcx * LENGTH + srcy];
-        chromosome[srcx * LENGTH + srcy] = tmp;
+        if(template[dstx * LENGTH + dsty] == 0 && template[srcx * LENGTH + srcy] == 0) {
+            int tmp = chromosome[dstx * LENGTH + dsty];
+            chromosome[dstx * LENGTH + dsty] = chromosome[srcx * LENGTH + srcy];
+            chromosome[srcx * LENGTH + srcy] = tmp;
+        }
     }
 
     @Override
