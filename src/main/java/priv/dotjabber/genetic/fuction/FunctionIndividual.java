@@ -6,19 +6,19 @@ import java.util.Arrays;
 
 public class FunctionIndividual extends Individual {
 
-    // chromosome (5 x 32 bits: a, b, c, d, g, 5 genomes)
+    // genotype (5 x 32 bits: a, b, c, d, g, 5 genomes)
     private static final int LENGTH = 5;
 
     // genome range
     private static final int RANGE = 32;
 
     public FunctionIndividual(boolean preset) {
-        chromosome = new int[LENGTH];
+        genotype = new int[LENGTH];
 
-        // set chromosome randomly
+        // set genotype randomly
         if (preset) {
             for(int i = 0; i < LENGTH; i++) {
-                chromosome[i] = RAND.nextInt(RANGE) - RANGE / 2;
+                genotype[i] = RAND.nextInt(RANGE) - RANGE / 2;
             }
         }
     }
@@ -29,7 +29,7 @@ public class FunctionIndividual extends Individual {
         int hi = bit / Integer.SIZE; // genome index
         int bi = bit % Integer.SIZE; // bit index
 
-        chromosome[hi] ^= 1 << bi; // set t
+        genotype[hi] ^= 1 << bi; // set t
     }
 
     public Individual cross(Individual other) {
@@ -40,18 +40,18 @@ public class FunctionIndividual extends Individual {
         // is taken from this individual.
         // - if we consider a bit above the point, the bit value
         // is taken from other individual.
-        int cs = LENGTH * Integer.SIZE; // chromosome size
+        int cs = LENGTH * Integer.SIZE; // genotype size
         int ci = RAND.nextInt(cs); // cross index
 
         for (int i = 0; i < cs; i++) {
-            int hi = i / Integer.SIZE; // chromosome index
+            int hi = i / Integer.SIZE; // genotype index
             int bi = i % Integer.SIZE; // bit index
 
             if(i < ci) {
-                child.chromosome[hi] |= ((this.getChromosome()[hi] >> bi) & 1) << bi;
+                child.genotype[hi] |= ((this.getGenotype()[hi] >> bi) & 1) << bi;
 
             } else {
-                child.chromosome[hi] |= ((other.getChromosome()[hi] >> bi) & 1) << bi;
+                child.genotype[hi] |= ((other.getGenotype()[hi] >> bi) & 1) << bi;
             }
         }
 
@@ -60,6 +60,6 @@ public class FunctionIndividual extends Individual {
 
     @Override
     public String toString() {
-        return Arrays.toString(chromosome) + ", error: " + getError();
+        return Arrays.toString(genotype) + ", error: " + getError();
     }
 }

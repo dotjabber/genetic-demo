@@ -43,34 +43,34 @@ public class Main {
 
 
         // corner case - empty
-//        Population population = new SudokuPopulation(CROSS_PARAM, MUTATE_PARAM, POPULATION_COUNT, new int[] {
-//                0, 0, 0,  0, 0, 0,  0, 0, 0,
-//                0, 0, 0,  0, 0, 0,  0, 0, 0,
-//                0, 0, 0,  0, 0, 0,  0, 0, 0,
-//
-//                0, 0, 0,  0, 0, 0,  0, 0, 0,
-//                0, 0, 0,  0, 0, 0,  0, 0, 0,
-//                0, 0, 0,  0, 0, 0,  0, 0, 0,
-//
-//                0, 0, 0,  0, 0, 0,  0, 0, 0,
-//                0, 0, 0,  0, 0, 0,  0, 0, 0,
-//                0, 0, 0,  0, 0, 0,  0, 0, 0
-//        });
+        Population population = new SudokuPopulation(CROSS_PARAM, MUTATE_PARAM, POPULATION_COUNT, new int[] {
+                5, 7, 0,  0, 1, 8,  0, 4, 0,
+                0, 0, 0,  5, 0, 0,  0, 0, 0,
+                0, 0, 0,  0, 7, 9,  1, 0, 5,
+
+                8, 0, 0,  0, 0, 0,  0, 0, 7,
+                0, 5, 7,  1, 0, 4,  8, 2, 0,
+                3, 0, 0,  0, 0, 0,  0, 0, 1,
+
+                7, 0, 8,  4, 9, 0,  0, 0, 0,
+                0, 0, 0,  0, 0, 7,  0, 0, 0,
+                0, 6, 0,  8, 3, 0,  0, 1, 4
+        });
 
         // hard
-        Population population = new SudokuPopulation(CROSS_PARAM, MUTATE_PARAM, POPULATION_COUNT, new int[] {
-                0, 0, 2,  0, 0, 0,  1, 0, 0,
-                6, 0, 0,  7, 0, 0,  8, 0, 4,
-                0, 9, 7,  0, 0, 4,  0, 0, 3,
-
-                4, 0, 0,  1, 0, 0,  0, 0, 0,
-                0, 7, 0,  3, 0, 2,  0, 6, 0,
-                0, 0, 0,  0, 0, 8,  0, 0, 2,
-
-                2, 0, 0,  9, 0, 0,  6, 3, 0,
-                7, 0, 1,  0, 0, 3,  0, 0, 9,
-                0, 0, 9,  0, 0, 0,  2, 0, 0
-        });
+//        Population population = new SudokuPopulation(CROSS_PARAM, MUTATE_PARAM, POPULATION_COUNT, new int[] {
+//                0, 0, 2,  0, 0, 0,  1, 0, 0,
+//                6, 0, 0,  7, 0, 0,  8, 0, 4,
+//                0, 9, 7,  0, 0, 4,  0, 0, 3,
+//
+//                4, 0, 0,  1, 0, 0,  0, 0, 0,
+//                0, 7, 0,  3, 0, 2,  0, 6, 0,
+//                0, 0, 0,  0, 0, 8,  0, 0, 2,
+//
+//                2, 0, 0,  9, 0, 0,  6, 3, 0,
+//                7, 0, 1,  0, 0, 3,  0, 0, 9,
+//                0, 0, 9,  0, 0, 0,  2, 0, 0
+//        });
 
         // middle
 //        Population population = new SudokuPopulation(CROSS_PARAM, MUTATE_PARAM, POPULATION_COUNT, new int[] {

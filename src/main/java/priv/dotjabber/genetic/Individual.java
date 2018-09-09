@@ -6,7 +6,7 @@ import java.util.Random;
 public abstract class Individual {
     protected static final Random RAND = new Random();
 
-    protected int[] chromosome;
+    protected int[] genotype;
     private double error = -1;
 
     public abstract Individual cross(Individual other);
@@ -15,7 +15,7 @@ public abstract class Individual {
 
     public double getError(Scorer scorer) {
         if(error < 0) {
-            error = scorer.getError(chromosome);
+            error = scorer.getError(genotype);
         }
 
         return error;
@@ -25,8 +25,8 @@ public abstract class Individual {
         return error;
     }
 
-    public int[] getChromosome() {
-        return chromosome;
+    public int[] getGenotype() {
+        return genotype;
     }
 
     @Override
@@ -34,11 +34,11 @@ public abstract class Individual {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Individual that = (Individual) o;
-        return Arrays.equals(chromosome, that.chromosome);
+        return Arrays.equals(genotype, that.genotype);
     }
 
     @Override
     public int hashCode() {
-        return Arrays.hashCode(chromosome);
+        return Arrays.hashCode(genotype);
     }
 }
