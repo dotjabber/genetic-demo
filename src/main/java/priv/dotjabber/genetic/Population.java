@@ -5,15 +5,15 @@ import java.util.*;
 public abstract class Population {
     private static final Random RAND = new Random();
 
-    private List<Individual> currentContainer;
-    private List<Individual> nextContainer;
+    private final List<Individual> currentContainer;
+    private final List<Individual> nextContainer;
 
-    private double crossParam;
-    private double mutateParam;
-    private int populationCount;
+    private final double crossParam;
+    private final double mutateParam;
+    private final int populationCount;
 
-    private java.util.Comparator comparator;
-    private Object initParam;
+    private final java.util.Comparator<? super Individual> comparator;
+    private final Object initParam;
 
     public Population(double cp, double mp, int pc, Scorer sc, Object ip) {
         crossParam = cp;
@@ -48,7 +48,7 @@ public abstract class Population {
                         c.mutate();
                     }
 
-                    // add it to the next generation (if it does't exists already
+                    // add it to the next generation (if it doesn't exists already
                     // there might be the same individuals...)
                     if(!nextContainer.contains(c)) {
                         nextContainer.add(c);

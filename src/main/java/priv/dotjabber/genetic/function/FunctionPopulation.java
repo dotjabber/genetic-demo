@@ -1,4 +1,4 @@
-package priv.dotjabber.genetic.fuction;
+package priv.dotjabber.genetic.function;
 
 import priv.dotjabber.genetic.Individual;
 import priv.dotjabber.genetic.Population;

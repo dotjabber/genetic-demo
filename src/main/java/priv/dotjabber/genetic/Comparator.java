@@ -1,7 +1,7 @@
 package priv.dotjabber.genetic;
 
 public class Comparator implements java.util.Comparator<Individual> {
-    private Scorer scorer;
+    private final Scorer scorer;
 
     public Comparator(Scorer scorer) {
         this.scorer = scorer;

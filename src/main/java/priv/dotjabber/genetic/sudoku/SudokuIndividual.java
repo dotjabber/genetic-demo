@@ -33,7 +33,7 @@ public class SudokuIndividual extends Individual {
                     for (int n = 0; n < BLOCK; n++) {
                         if (template[(i + m) * LENGTH + (j + n)] > 0) {
                             genotype[(i + m) * LENGTH + (j + n)] = template[(i + m) * LENGTH + (j + n)];
-                            numbers.remove(new Integer(template[(i + m) * LENGTH + (j + n)]));
+                            numbers.remove(Integer.valueOf(template[(i + m) * LENGTH + (j + n)]));
                         }
                     }
                 }
